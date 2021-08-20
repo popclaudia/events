@@ -7,12 +7,14 @@ import { LoginComponent } from './login/login.component';
 import { EventsComponent } from './events/events.component';
 import { HttpClientModule } from '@angular/common/http'
 import { AdminModule } from './admin/admin.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    EventsComponent
+    EventsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

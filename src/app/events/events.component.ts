@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
@@ -8,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class EventsComponent implements OnInit {
   name = "";
   email = "";
-  constructor() { }
+  constructor(private router: Router,
+    public authService: AuthService,) { }
 
   ngOnInit(): void {
     this.name = localStorage.getItem('user-data') || "{}";
@@ -17,6 +19,11 @@ export class EventsComponent implements OnInit {
     this.email = localStorage.getItem('user-data') || "{}";
     this.email = JSON.parse(this.email).email;
     
+  }
+
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['login']);
   }
 
 }
