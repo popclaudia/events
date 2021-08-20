@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ValidateInputService } from '../validate-input.service';
-import { LoginService } from '../login.service';
+import { LoginService } from '../auth/login.service';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 @Component({
@@ -37,11 +37,13 @@ export class LoginComponent implements OnInit {
     this.loginService.login(email, password)
       .subscribe(
         response => {
-          this.authService.login();
         console.log(response);
         localStorage.setItem('user-data', JSON.stringify(response.data.user));
         localStorage.setItem('token', response.data.authentication.access_token);
+        this.authService.login().subscribe();
         this.router.navigate(['events']);
+
+
       },
       error => {
         console.log(error.error.message);

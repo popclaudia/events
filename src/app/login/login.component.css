@@ -5,7 +5,7 @@
     width: 50%;
     margin: 50px auto;
     padding: 30px;
-    background-color: rgb(250, 240, 226);
+    background-color: #ffeac2;
     border-radius: 10px;
     min-width: 300px;
 }
@@ -19,7 +19,7 @@ button {
 
 button {
     border: none;
-    background-color: rgb(37, 25, 11);
+    background-color: #1C1F21;
     color: white;
     width: 50%;
     margin-top: 70px;

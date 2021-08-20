@@ -1,5 +1,19 @@
-<header>
-    <span class='nav'>{{name}}</span>
-    <span class='nav'>{{email}}</span>
-    <button class='nav' (click)="logout()" *ngIf="authService.isLoggedIn" >LogOut</button>
-</header>
+<app-header></app-header>
+<div id="events-type">
+    <!-- <span class="option">Recommended</span>
+    <span class="option">All</span>
+    <span class="option">My events</span> -->
+</div>
+<div class="grid-container">
+    <div *ngFor='let event of events' class="grid-item">
+        <img class="event-image" src={{event.image}}>
+        <h4>{{event.name}}</h4>
+        <p class="event-date">{{event.date.short_date}}</p>
+        <p class="event-location">{{event.location}}</p>
+    </div>
+</div>
+<div id='navigate'>
+    <button (click)="navigate(-1)"><</button>
+    <span> Page {{currentPage}} of {{lastPage}} </span>
+    <button (click)="navigate(1)">></button>
+</div>

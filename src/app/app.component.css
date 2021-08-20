@@ -1,3 +1,11 @@
 button:hover {
     cursor: pointer;
 }
+
+button {
+    border: none;
+    background-color: rgb(37, 25, 11);
+    color: rgb(56, 49, 49);
+    margin-top: 70px;
+    margin: 0 auto;
+}

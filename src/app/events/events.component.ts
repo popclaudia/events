@@ -1,29 +1,65 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+import { NavigationEnd } from '@angular/router';
+import { EventsService } from '../events.service';
+
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
-  name = "";
-  email = "";
-  constructor(private router: Router,
-    public authService: AuthService,) { }
 
+  public currentPage?: string;
+  public lastPage? : string;
+
+  constructor(private eventsService: EventsService) { }
+  public events: any;
   ngOnInit(): void {
-    this.name = localStorage.getItem('user-data') || "{}";
-    this.name = JSON.parse(this.name).first_name + " " + JSON.parse(this.name).last_name;
-    
-    this.email = localStorage.getItem('user-data') || "{}";
-    this.email = JSON.parse(this.email).email;
-    
+    this.getEvents("");
   }
 
-  logout(){
-    this.authService.logout();
-    this.router.navigate(['login']);
+  getEvents(page: string): void {
+    this.eventsService.getEvents(2, page)
+      .subscribe(
+        response => {
+          this.events = response.data.items;
+          localStorage.setItem('current-page', response.data.pagination.current_page);
+          localStorage.setItem('last-page', response.data.pagination.last_page);
+          this.currentPage = localStorage.getItem('current-page') + "";
+          this.lastPage = localStorage.getItem('last-page') + "";
+          if(response.data.pagination.next_page != null){
+            localStorage.setItem('next-page-url', response.data.pagination.next_page.substring(46));
+          }
+          console.log( response.data.items);
+      },
+      error => {
+        console.log(error.error.message);
+       
+      }
+      );  
   }
+
+  
+  navigate(n: number){
+    this.currentPage = localStorage.getItem('current-page') + "";
+    this.lastPage = localStorage.getItem('last-page') + "";
+    let nextPage = localStorage.getItem('next-page-url') + "";
+    let prevPage = localStorage.getItem('next-page-url') + "";
+    let pageArray = prevPage.split("=");
+    prevPage = pageArray[0] + '=' + (parseInt(pageArray[1]) - 2);
+    
+    if(n==-1 && this.currentPage!="1"){
+      console.log(prevPage);
+      this.getEvents(prevPage);
+
+    }else{
+      if(n==1 && parseInt(this.currentPage)<parseInt(this.lastPage)){
+        console.log('next');
+        this.getEvents(nextPage);
+      }
+    }
+  }
+
+
 
 }

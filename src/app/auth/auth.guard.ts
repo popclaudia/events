@@ -24,11 +24,14 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   }
 
   checkLogin(url: string): true|UrlTree {
-    if (this.authService.isLoggedIn) { return true; }
+    console.log('Hello' + this.authService.isLoggedIn)
+    if (this.authService.isLoggedIn) { 
+      console.log(url); return true; 
+    }
 
     // Store the attempted URL for redirecting
     this.authService.redirectUrl = url;
-
+    // console.log(url);
     // Redirect to the login page
     return this.router.parseUrl('/login');
   }

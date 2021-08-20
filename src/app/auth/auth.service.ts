@@ -14,14 +14,14 @@ export class AuthService {
   login(): Observable<boolean> {
     console.log(localStorage.getItem('token') != null);
     return of(localStorage.getItem('token') != null).pipe(
-      tap(() => this.isLoggedIn = localStorage.getItem('token')!=null)
+      tap(() => this.isLoggedIn = (localStorage.getItem('token')!=null))
     );
   }
 
   
   logout(): void {
     localStorage.clear();
-    this.isLoggedIn = localStorage.getItem('token') != null;
+    this.isLoggedIn = (localStorage.getItem('token') != null);
     
   }
 }
