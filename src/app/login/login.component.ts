@@ -38,10 +38,10 @@ export class LoginComponent implements OnInit {
       .subscribe(
         response => {
         console.log(response);
-        localStorage.setItem('user-data', JSON.stringify(response.data.user));
+        localStorage.setItem('user-data', JSON.stringify(response.data));
         localStorage.setItem('token', response.data.authentication.access_token);
         this.authService.login().subscribe();
-        this.router.navigate(['events']);
+        this.router.navigate(['my-profile']);
 
 
       },

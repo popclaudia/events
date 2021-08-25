@@ -1,0 +1,42 @@
+<app-header></app-header>
+<div id='my-profile'>
+
+    <div class="parent">
+        <div class="cell div1">
+            <div class='profile'>
+                <img class="profile-picture" src={{avatar}}>
+                <form class='upload-image' (submit)='$event.preventDefault(); updateProfilePicture()'>
+                    <label class="custom-file-upload">
+                        <input type="file" name='file' #newImage/>
+                        <img class='upload-icon' src='https://iconape.com/wp-content/files/ys/367413/png/367413.png'>
+                    </label>
+                    <input type='submit' value='Update'>
+                </form>
+            </div>
+            <h3>{{name}}</h3>
+            <h3>{{email}}</h3>
+        </div>
+        <div class="cell div2">
+            <H2>
+                Preferred industries and topics
+            </H2>
+            <ul>
+                <li *ngFor='let industrie of preffered_industries_topics' class='industries'>
+                    <img class='industrie-picture' src={{industrie.image}}>
+                    <div class="industrie">
+                        <b>{{industrie.name}}</b>
+                        <ul class='topic'>
+                            <li *ngFor='let topic of industrie.selected_topics'>
+                                {{topic.name}}
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+</div>

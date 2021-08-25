@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+button:hover {
+    cursor: pointer;
+}
+
+button {
+    border: none;
+    background-color: rgb(37, 25, 11);
+    color: rgb(56, 49, 49);
+    margin-top: 70px;
+    margin: 0 auto;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

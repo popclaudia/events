@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { AdminModule } from './admin/admin.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HeaderComponent } from './header/header.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HeaderComponent } from './header/header.component';
     LoginComponent,
     EventsComponent,
     PageNotFoundComponent,
-    HeaderComponent
+    HeaderComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,

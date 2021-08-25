@@ -17,10 +17,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.name = localStorage.getItem('user-data') || "{}";
-    this.name = JSON.parse(this.name).first_name + " " + JSON.parse(this.name).last_name;
+    this.name = JSON.parse(this.name).user.first_name + " " + JSON.parse(this.name).user.last_name;
     
     this.email = localStorage.getItem('user-data') || "{}";
-    this.email = JSON.parse(this.email).email;
+    this.email = JSON.parse(this.email).user.email;
     
   }
 

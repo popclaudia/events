@@ -46,7 +46,12 @@ export class EventsComponent implements OnInit {
     let nextPage = localStorage.getItem('next-page-url') + "";
     let prevPage = localStorage.getItem('next-page-url') + "";
     let pageArray = prevPage.split("=");
-    prevPage = pageArray[0] + '=' + (parseInt(pageArray[1]) - 2);
+
+    if(this.currentPage == this.lastPage){
+      prevPage = pageArray[0] + '=' + (parseInt(pageArray[1]) - 1);
+    }else{  
+      prevPage = pageArray[0] + '=' + (parseInt(pageArray[1]) - 2);
+    }
     
     if(n==-1 && this.currentPage!="1"){
       console.log(prevPage);
