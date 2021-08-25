@@ -64,22 +64,59 @@ input[type="file"] {
     position: relative;
 }
 
-.upload-image {
+#upload-icon {
     position: absolute;
     left: 130px;
-    bottom: 30px;
-}
-
-.upload-icon {
+    bottom: 40px;
     width: 40px;
     border-radius: 50%;
     border: 1px solid;
 }
 
-.upload-icon:hover {
+#upload-icon:hover {
     cursor: pointer;
 }
 
-input[type="submit"] {
-    /* display: none; */
+#save-changes {
+    display: none;
+    position: absolute;
+    font-size: 40px;
+    font-weight: bold;
+    color: darkgreen;
+    border-radius: 50%;
+    left: 129px;
+    bottom: 32px;
+    background-color: rgb(255, 255, 255);
+    border: solid 1px;
+    clip-path: circle(40% at 50% 50%);
 }
+
+#save-changes:hover{
+    cursor: pointer;
+}
+
+
+.loader {
+    position: absolute;
+    border: 6px solid #e2e2e2;
+    border-radius: 50%;
+    top: 188px;
+    background-color: white;
+    left: 131px;
+    border-top: 6px solid #3498db;
+    width: 29px;
+    height: 29px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

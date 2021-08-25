@@ -12,18 +12,20 @@ export class MyProfileComponent implements OnInit {
   @ViewChild('newImage')
   newImage!: ElementRef<HTMLInputElement>;
   
+  @ViewChild('form')
+  form!: ElementRef<HTMLInputElement>;
+
   public userData: any;
+  public imageUrl: any;
   public avatar = '';
   public name = '';
   public email = '';
   public preffered_industries_topics: any;
+  loading=false;
   constructor(private myProfileService: MyProfileService) { }
 
   ngOnInit(): void {
-      this.getUserData();
-
-
-      
+      this.getUserData(); 
      
   }
 
@@ -33,6 +35,16 @@ export class MyProfileComponent implements OnInit {
       response => {
       this.userData=response;
       this.parseData();
+      const profilePic = document.getElementById('profile-pic');
+      if(profilePic!=null)
+        profilePic.style.filter = 'none';
+      const uploadIcon = document.getElementById('upload-icon');
+      const saveButton = document.getElementById('save-changes');
+      if(uploadIcon && saveButton){
+        uploadIcon.style.display = 'block';
+        saveButton.style.display = 'none';
+      }
+      this.loading=false;
     },
     error => {
       console.log(error.error.message);
@@ -47,29 +59,42 @@ export class MyProfileComponent implements OnInit {
     this.email = this.userData.data.about_me.email;
 
     this.preffered_industries_topics = this.userData.data.about_me.preferred_industries
-
-
-
   }
 
+preview(){
+  const profilePic = document.getElementById('profile-pic');
+  if(profilePic!=null){
+    profilePic.style.filter = 'blur(5px)';
+
+    const uploadIcon = document.getElementById('upload-icon');
+    const saveButton = document.getElementById('save-changes');
+    if(uploadIcon && saveButton){
+      uploadIcon.style.display = 'none';
+      saveButton.style.display = 'block';
+
+    }
+    
+  }
+}
 
   updateProfilePicture(){
-
-
-    const formData = new FormData();
-    formData.append('file', this.newImage.nativeElement.value)
+    const formm = document.querySelector("form") || undefined;
+    var formData = new FormData(formm);
     formData.append("type", "avatar");
     formData.append("id", this.userData.data.id);
-
+    this.loading=true;
     this.myProfileService.postUserImage(formData).subscribe(
       response => {
-        this.userData=response;
-        // this.parseData();
+        this.imageUrl = response;
+        this.myProfileService.putUserImage(this.imageUrl.data.url).subscribe(
+          response =>{
+              this.getUserData();
+              
+            }
+        )
       }
 
     )
-
-    console.log('heyy')
   }
 
 

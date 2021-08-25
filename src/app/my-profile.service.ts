@@ -31,9 +31,7 @@ export class MyProfileService {
 
   postUserImage(formData: FormData): Observable<any[]> {
     console.log(formData)
-    return this.http.post<any[]>(this.baseURL+'upload', formData,this.httpOptions).pipe(tap(response =>  
-      console.log(response))
-    );
+    return this.http.post<any[]>(this.baseURL+'upload', formData,this.httpOptions);
   }
 
 
