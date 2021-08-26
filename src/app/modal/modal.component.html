@@ -1,0 +1,21 @@
+<div class="modal">
+
+    <div class="modal-header">
+        <button type="button" class="right close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <b class="modal-title">Event details</b>
+        <hr>
+    </div>
+    <div class="modal-body">
+        <img src="{{image}}">
+        <H2>{{name}}</H2>
+        <h3>{{location}}</h3>
+        <h3>{{period}}</h3>
+        <p>{{description}}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="right btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    </div>
+
+</div>

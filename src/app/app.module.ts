@@ -10,6 +10,7 @@ import { AdminModule } from './admin/admin.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HeaderComponent } from './header/header.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
     EventsComponent,
     PageNotFoundComponent,
     HeaderComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

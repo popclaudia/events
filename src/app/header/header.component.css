@@ -1,5 +1,5 @@
 header {
-    background-color: #ffeac2;
+    background-color: white;
     height: 40px;
     display: flex;
     align-items: center;
@@ -10,16 +10,29 @@ header {
     left: 0px;
     width: 100%;
     z-index: 1;
+    box-shadow: 0 2px 3.8px rgba(0, 0, 0, 0.024), 0 5.6px 10.4px rgba(0, 0, 0, 0.035), 0 13.6px 25px rgba(0, 0, 0, 0.046), 0 45px 83px rgba(0, 0, 0, 0.07);
 }
 
 button {
     border: none;
-    background-color: #1C1F21;
-    color: white;
+    background-image: linear-gradient( #ac74ec, #3669d8);
     border-radius: 5px;
-    padding: 5px 10px;
+    padding: 10px 25px;
+    color: white;
+    font-weight: bold;
 }
 
 .nav {
     margin: 10px;
+}
+
+nav>a {
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+nav>a:hover {
+    background-color: rgb(225, 220, 245);
 }

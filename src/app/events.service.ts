@@ -29,4 +29,15 @@ export class EventsService {
     return this.http.post<any>(this.baseURL + "/events" + page, {event_status: n}, this.httpOptions)
   }
 
+
+  
+  getEventDetails(id: string): Observable<any> {
+    this.token =  "Bearer " + localStorage.getItem('token');
+    this.httpOptions = {
+      headers: new HttpHeaders({'security-token': 'test', 'language': 'en',
+      'Authorization': this.token})
+    };
+    return this.http.get<any>(this.baseURL + "/event/" + id, this.httpOptions);
+  }
+
 }

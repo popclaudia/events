@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EventsService } from '../events.service';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-events',
@@ -12,7 +13,8 @@ export class EventsComponent implements OnInit {
   public currentPage?: string;
   public lastPage? : string;
 
-  constructor(private eventsService: EventsService) { }
+  constructor(private eventsService: EventsService,
+    private modalService: NgbModal) { }
   public events: any;
   ngOnInit(): void {
     this.getEvents("");
@@ -65,6 +67,34 @@ export class EventsComponent implements OnInit {
     }
   }
 
+
+  showDetails(event: Event){
+    const target = event.target;
+    if(target!=null){
+
+      const idAttr = (<Element>target).getAttribute('id') || '';
+      console.log('I want detailsss ' + idAttr)
+
+      this.eventsService.getEventDetails(idAttr).subscribe(
+        response => {
+          console.log(response);
+          const details = response;
+          this.open(details);
+        }
+
+      )
+    }
+  }
+
+
+  open(details: any) {
+    const modalRef = this.modalService.open(ModalComponent);
+    modalRef.componentInstance.name = details.data.name;
+    modalRef.componentInstance.location = details.data.location;
+    modalRef.componentInstance.period = details.data.date.short_date;
+    modalRef.componentInstance.description = details.data.description;
+    modalRef.componentInstance.image = details.data.image;
+  }
 
 
 }

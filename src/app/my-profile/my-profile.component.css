@@ -7,7 +7,7 @@
     max-width: 1200px;
     margin: 60px auto;
     padding: 30px;
-    background-color: rgb(241, 241, 241);
+    background-color: rgb(255, 255, 255);
 }
 
 .div1 {
@@ -35,7 +35,7 @@ ul {
 .industries {
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: rgb(248, 251, 255);
     border-radius: 5px;
     overflow: hidden;
 }
@@ -91,10 +91,9 @@ input[type="file"] {
     clip-path: circle(40% at 50% 50%);
 }
 
-#save-changes:hover{
+#save-changes:hover {
     cursor: pointer;
 }
-
 
 .loader {
     position: absolute;
@@ -106,17 +105,28 @@ input[type="file"] {
     border-top: 6px solid #3498db;
     width: 29px;
     height: 29px;
-    -webkit-animation: spin 2s linear infinite; /* Safari */
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
     animation: spin 2s linear infinite;
-  }
-  
-  /* Safari */
-  @-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+}
+
+
+/* Safari */
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

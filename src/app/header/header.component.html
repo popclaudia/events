@@ -1,4 +1,8 @@
 <header>
+    <nav>
+        <a routerLink="/events">Events</a> |
+        <a routerLink="/my-profile">My Profile</a>
+    </nav>
     <span class='nav'>{{name}}</span>
     <span class='nav'>{{email}}</span>
     <button class='nav' (click)="logout()" *ngIf="authService.isLoggedIn">LogOut</button>
