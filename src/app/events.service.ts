@@ -1,14 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { environment } from '../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class EventsService {
 
   private token =  "Bearer " + localStorage.getItem('token');
-  private baseURL = 'http://meetprep.beta.bitstone.eu/api/v1';
+  private baseURL = environment.apiHost
   httpOptions = {
     headers: new HttpHeaders({'security-token': 'test', 'language': 'en',
     'Authorization': this.token})

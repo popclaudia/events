@@ -12,7 +12,6 @@ export class AuthService {
   redirectUrl: string | null = null;
 
   login(): Observable<boolean> {
-    console.log(localStorage.getItem('token') != null);
     return of(localStorage.getItem('token') != null).pipe(
       tap(() => this.isLoggedIn = (localStorage.getItem('token')!=null))
     );

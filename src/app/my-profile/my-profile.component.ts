@@ -46,9 +46,7 @@ export class MyProfileComponent implements OnInit {
       }
       this.loading=false;
     },
-    error => {
-      console.log(error.error.message);
-    }
+
     
     );
   }

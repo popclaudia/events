@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   validate(email: string, password: string): void{
     email = email.trim();
     if(this.validateInputService.validateEmail(email)){
-      console.log('good');
       this.logIn(email, password);
     }
     else{
@@ -37,7 +36,6 @@ export class LoginComponent implements OnInit {
     this.loginService.login(email, password)
       .subscribe(
         response => {
-        console.log(response);
         localStorage.setItem('user-data', JSON.stringify(response.data));
         localStorage.setItem('token', response.data.authentication.access_token);
         this.authService.login().subscribe();
@@ -46,7 +44,6 @@ export class LoginComponent implements OnInit {
 
       },
       error => {
-        console.log(error.error.message);
         this.userNotFound.nativeElement.textContent = error.error.message;
       }
       

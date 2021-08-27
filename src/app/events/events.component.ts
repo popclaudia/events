@@ -32,11 +32,6 @@ export class EventsComponent implements OnInit {
           if(response.data.pagination.next_page != null){
             localStorage.setItem('next-page-url', response.data.pagination.next_page.substring(46));
           }
-          console.log( response.data.items);
-      },
-      error => {
-        console.log(error.error.message);
-       
       }
       );  
   }
@@ -56,12 +51,10 @@ export class EventsComponent implements OnInit {
     }
     
     if(n==-1 && this.currentPage!="1"){
-      console.log(prevPage);
       this.getEvents(prevPage);
 
     }else{
       if(n==1 && parseInt(this.currentPage)<parseInt(this.lastPage)){
-        console.log('next');
         this.getEvents(nextPage);
       }
     }
@@ -73,11 +66,9 @@ export class EventsComponent implements OnInit {
     if(target!=null){
 
       const idAttr = (<Element>target).getAttribute('id') || '';
-      console.log('I want detailsss ' + idAttr)
 
       this.eventsService.getEventDetails(idAttr).subscribe(
         response => {
-          console.log(response);
           const details = response;
           this.open(details);
         }

@@ -10,7 +10,7 @@ header {
     left: 0px;
     width: 100%;
     z-index: 1;
-    box-shadow: 0 2px 3.8px rgba(0, 0, 0, 0.024), 0 5.6px 10.4px rgba(0, 0, 0, 0.035), 0 13.6px 25px rgba(0, 0, 0, 0.046), 0 45px 83px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 0.7px 2.2px rgba(0, 0, 0, 0.02), 0 1.8px 5.3px rgba(0, 0, 0, 0.028), 0 3.4px 10px rgba(0, 0, 0, 0.035), 0 6px 17.9px rgba(0, 0, 0, 0.042), 0 11.3px 33.4px rgba(0, 0, 0, 0.05), 0 27px 80px rgba(0, 0, 0, 0.07);
 }
 
 button {
@@ -24,6 +24,7 @@ button {
 
 .nav {
     margin: 10px;
+    font-weight: bold;
 }
 
 nav>a {

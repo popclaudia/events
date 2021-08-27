@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class MyProfileService {
 
   user = '';
   private token =  "Bearer " + localStorage.getItem('token');
-  private baseURL = 'http://meetprep.beta.bitstone.eu/api/v1/';
+  private baseURL = environment.apiHost;
   httpOptions = {
     headers: new HttpHeaders({'security-token': 'test', 'language': 'en',
     'Authorization': this.token})
@@ -24,20 +24,23 @@ export class MyProfileService {
 }
 
   getUserData(): Observable<any[]> {
-    
-    return this.http.get<any[]>(this.baseURL+'user/'+ this.user, this.httpOptions);
+    this.token =  "Bearer " + localStorage.getItem('token');
+    this.httpOptions = {
+      headers: new HttpHeaders({'security-token': 'test', 'language': 'en',
+      'Authorization': this.token})
+    };
+    return this.http.get<any[]>(this.baseURL+'/user/'+ this.user, this.httpOptions);
   }
 
 
   postUserImage(formData: FormData): Observable<any[]> {
-    console.log(formData)
-    return this.http.post<any[]>(this.baseURL+'upload', formData,this.httpOptions);
+    return this.http.post<any[]>(this.baseURL+'/upload', formData,this.httpOptions);
   }
 
 
   putUserImage(url: string){
     const params={avatar_url: url}; 
-    return this.http.put<any[]>(this.baseURL+'user/'+ this.user,params, this.httpOptions)
+    return this.http.put<any[]>(this.baseURL+'/user/'+ this.user,params, this.httpOptions)
   }
   
 }
