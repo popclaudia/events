@@ -30,7 +30,7 @@ export class EventsComponent implements OnInit {
           this.currentPage = localStorage.getItem('current-page') + "";
           this.lastPage = localStorage.getItem('last-page') + "";
           if(response.data.pagination.next_page != null){
-            localStorage.setItem('next-page-url', response.data.pagination.next_page.substring(46));
+            localStorage.setItem('next-page-url', response.data.pagination.next_page.substring(47));
           }
       }
       );  
