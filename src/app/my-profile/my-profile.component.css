@@ -24,8 +24,10 @@
 }
 
 .profile-picture {
-    width: 200px;
-    clip-path: circle(40% at 50% 50%);
+    object-fit: cover;
+    border-radius: 50%;
+    height: 160px;
+    width: 160px;
 }
 
 ul {
